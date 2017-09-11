@@ -17,10 +17,10 @@ vars <- c("maxave","minave","totals","vprph09","vprph15") #,"solarave")
 for(measure in vars)
 {
   #measure <- vars[1]
-  get_awap_data(start = '1961-01-01',end = '2014-12-31', measure)
+  get_awap_data(start = '2017-09-08',end = '2017-09-08', measure)
 }
 st <- Sys.time()
-for(year in 1993:2015){
+for(year in 2017){
 print(year)
 #  setwd("../data_daily_derived_1961_1990")  
 #  year = 1992
