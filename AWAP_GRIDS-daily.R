@@ -1,26 +1,28 @@
 
 'name:AWAP_GRIDS-daily'
-library(githubinstall)
-githubinstall("awaptools[develop]")
+#library(githubinstall)
+#githubinstall("awaptools[develop]")
 
 #install.packages("devtools")
-library(devtools)
-install_github("swish-climate-impact-assessment/awaptools", ref = "develop")
+#library(devtools)
+#install_github("swish-climate-impact-assessment/awaptools", ref = "develop")
 require(awaptools)
 source('code/compress_gtifs2.R')
 library(raster)
 
 setwd("data_daily")
 # get weather data, beware that each grid is a couple of megabytes
-vars <- c("maxave","minave","totals","vprph09","vprph15") #,"solarave") 
+vars <- c("vprph15")#"maxave")#,"minave","totals","vprph09","vprph15") #,"solarave") 
 # solar only available after 1990
+for(yy in 1993){
 for(measure in vars)
 {
   #measure <- vars[1]
-  get_awap_data(start = '2017-09-08',end = '2017-09-08', measure)
+  get_awap_data(start = sprintf('%s-01-01', yy),end = sprintf('%s-12-31', yy), measure)
+}
 }
 st <- Sys.time()
-for(year in 2017){
+for(year in 1993){
 print(year)
 #  setwd("../data_daily_derived_1961_1990")  
 #  year = 1992
@@ -32,7 +34,7 @@ print(year)
 # file.rename(fl, file.path("../data_daily_derived_1991_2015", fl))
 # }  
   
-compress_gtifs2(indir = getwd(), subDir = "../data_daily_derived_1961_1990", filelist = filelist)
+compress_gtifs2(indir = getwd(), subDir = "../data_daily_derived_1991_2015", filelist = filelist)
 ed <- Sys.time()
 print(ed - st)
 }
