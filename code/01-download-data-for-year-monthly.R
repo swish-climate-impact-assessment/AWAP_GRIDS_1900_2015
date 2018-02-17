@@ -1,7 +1,7 @@
 projdir <- "~/ResearchData/AWAP_GRIDS/AWAP_GRIDS_1900_2015"
 projdir
 setwd(projdir)
-
+library(awaptools)
 dir()
 dir.create("data_provided_monthly")
 setwd("data_provided_monthly")
