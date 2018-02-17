@@ -6,7 +6,8 @@ dir()
 dir.create("data_provided_monthly")
 setwd("data_provided_monthly")
 # get weather data, beware that each grid is a couple of megabytes
-for(yy in 1901:1905){
+years <- 1900:1919
+for(yy in years){
     ## yy <- 1900
     load_monthly(start = sprintf('%s-01-01', yy),end = sprintf('%s-12-1', yy))
 }

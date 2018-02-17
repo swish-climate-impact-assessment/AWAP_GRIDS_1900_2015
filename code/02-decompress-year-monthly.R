@@ -4,7 +4,7 @@ dir.create("data_derived_monthly")
 setwd("data_provided_monthly")
 
 st <- Sys.time()
-for(year in 1902:1904){
+for(year in years){
 ## year <- yy
     print(year)
 
